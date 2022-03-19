@@ -9,19 +9,19 @@ class TodoContextProvider extends Component {
         super(props);
         this.state = {
             todos: [{
-                'title': 'first todo',
-                'text': 'cook hot sandwiches'
+                'task': 'cook hot sandwiches'
             },
-                {
-                    'title': 'second todo',
-                    'text': 'drink some beer'
-                }],
+            {
+                'task': 'drink some beer'
+            }],
         };
     }
 
     // todo: create
-    createTodo() {
-
+    createTodo(e, task) {
+        e.preventDefault();
+        let todos = [task, ...this.state.todos];
+        this.setState({todos});
     }
 
     // todo: read
