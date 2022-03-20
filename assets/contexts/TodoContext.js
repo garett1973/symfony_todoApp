@@ -1,5 +1,7 @@
 import React, {Component, createContext} from 'react';
 import axios from "axios";
+
+
 export const TodoContext = createContext();
 
 
@@ -61,13 +63,20 @@ class TodoContextProvider extends Component {
     // todo: update
 
     updateTodo(data) {
-        const todos = [...this.state.todos];
-        const todo = todos.find(todo => {
-            return todo.id === data.id;
-        });
+        axios.put('/todo/update/' + data.id, data)
+            .then(response => {
+                const todos = [...this.state.todos];
+                const todo = todos.find(todo => {
+                    return todo.id === data.id;
+                });
 
-        todo.task =  data.task;
-        this.setState({todos});
+                todo.task =  data.task;
+                todo.isCompleted = data.isCompleted;
+
+                this.setState({todos});
+            }).catch(error => {
+                console.error(error);
+        });
     }
 
     // todo: delete

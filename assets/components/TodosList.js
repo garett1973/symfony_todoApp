@@ -66,7 +66,7 @@ function TodosList() {
                                                     <CancelIcon/>
                                                 </IconButton>
                                                 <IconButton onClick={() => {
-                                                context.updateTodo({id: todo.id, task: editTodo});
+                                                context.updateTodo({id: todo.id, task: editTodo, isCompleted: false});
                                                 setEditVisible(false);
                                                     }
                                                 }>
