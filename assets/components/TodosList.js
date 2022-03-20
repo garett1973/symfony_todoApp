@@ -21,7 +21,10 @@ function TodosList() {
     return (
         <Fragment>
         <form onSubmit={(event) => {
-            context.createTodo(event, {task: addTodo})
+            context.createTodo(event, {
+                task: addTodo,
+                isCompleted: false,
+            })
         }}>
             <Table>
                 <TableHead>
